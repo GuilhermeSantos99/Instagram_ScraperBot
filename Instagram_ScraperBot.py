@@ -3,7 +3,7 @@ from selenium import webdriver
 from random import randint
 from time import sleep
 
-class User_ScraperBot:
+class Instagram_ScraperBot:
     def __init__(self, username, password):
         self.username = username
         self.password = password
@@ -12,7 +12,6 @@ class User_ScraperBot:
     def login(self):
         driver = self.driver
         driver.get("https://www.instagram.com/")
-        
         sleep(randint(5, 6)) # Pausa.
 
         caixa_usuário = driver.find_element_by_xpath('//input[@name="username"]')
@@ -26,7 +25,6 @@ class User_ScraperBot:
         caixa_senha.send_keys(self.password) # Digita a senha informada.
 
         sleep(randint(2, 4)) # Pausa.
-
         caixa_senha.send_keys(Keys.RETURN) # Aperta o botão "Enter".
 
         self.raspando_seguidores()
@@ -35,17 +33,15 @@ class User_ScraperBot:
 
         contador = 0 
         seg_num = int(input('Digite o número de usuários coletados: '))
-        user_alvo = input('Digite o perfil do alvo: @')
+        user_alvo = input('Digite o perfil do alvo: @').strip().lower()
 
         driver = self.driver
         driver.get(f'https://www.instagram.com/{user_alvo}/')
 
         sleep(randint(3, 4)) # Pausa.
-
         driver.find_elements_by_class_name('-nal3')[1].click() # Clica no botão 'Seguidores'.
         
         sleep(5) # Pausa.
-
         pop_up = driver.find_element_by_xpath("//div[@class='isgrP']")
         scroll = 0
         
@@ -67,7 +63,6 @@ class User_ScraperBot:
                 break
             
             print(f'{contador} usernames salvos...')
-
         del usernames[seg_num:]
 
         with open(f'seguidores_de_@{user_alvo}.txt', 'w') as arquivo:
@@ -75,5 +70,5 @@ class User_ScraperBot:
                 if username != '':
                     arquivo.write(str('@' + username) + '\n')           
 
-User_ScraperBot = User_ScraperBot('Insira aqui o seu usuário', 'Insira aqui a sua senha')
-User_ScraperBot.login()
+Instagram_ScraperBot = Instagram_ScraperBot('Enter your username here', 'Enter your password here')
+Instagram_ScraperBot.login()
