@@ -1,4 +1,4 @@
-# Scraper_InstaBot
+# Instagram_ScraperBot
 
 > Status: Em desenvolvimento. ⚠️
 
@@ -22,7 +22,7 @@ Sou um intusiasta da programação e, infelizmente, não pude dedicar o tempo ne
 + Após isso, o bot irá coletar o número de usernames desejado e salvar em um arquivo de texto. 
 
 
-# Scraper_InstaBot
+# Instagram_ScraperBot
 
 > Status: Under development. ⚠️
 
